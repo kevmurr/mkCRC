@@ -1,0 +1,2 @@
+1.885e-6 according to schropp et al @12kev
+1.7xx according to my calculations
