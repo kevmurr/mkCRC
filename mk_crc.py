@@ -16,13 +16,14 @@ def run_mk_crc(name,dir,size_mlls=50, coeff_x=0.00015, f_x=250, coeff_y=0.00015,
     flip_y = False
     xdim_o=size_mlls # in µm
     ydim_o=size_mlls # in µm
+    # gets the total correction without knowing the lenslet number. Unit is in µm.
     (pupil_size_arr_x,total_corr_arr_x)=get_total_correction2(c=coeff_x,size_sfl_mll=xdim_o,factor_size_sfl=factor_size_x,f_sfl=f_x,delta=delta_PMMAmod_17_5,pxsize=px_size)
     (pupil_size_arr_y,total_corr_arr_y)=get_total_correction2(c=coeff_y,size_sfl_mll=ydim_o,factor_size_sfl=factor_size_y,f_sfl=f_y,delta=delta_PMMAmod_17_5,pxsize=px_size)
     array=np.zeros((pupil_size_arr_y.shape[0],pupil_size_arr_x.shape[0]))
     for i1 in range(0,array.shape[0]):
         for i2 in range(0,array.shape[1]):
             array[i1,i2]=total_corr_arr_x[i2]+total_corr_arr_y[i1]
-    print(array.shape)
+    #now dividing by the number of refracting surfaces to get each surface
     array=(array-np.amin(array))/(2*N_lensletts)
     if factor_phase!=None:
         array=array*factor_phase
@@ -34,7 +35,8 @@ def run_mk_crc(name,dir,size_mlls=50, coeff_x=0.00015, f_x=250, coeff_y=0.00015,
     xdimwall=pillarwidth
     ydim=np.float(ydim_o*factor_size_y)
     ydimwall=ydim
-    zdim=np.float(2*maxheight+scale_spacer*maxheight)
+    #total z height of each lenslet
+    zdim=np.float(2*maxheight+scale_spacer)
 
 
     pxsize=xdim/array.shape[1]
@@ -42,7 +44,7 @@ def run_mk_crc(name,dir,size_mlls=50, coeff_x=0.00015, f_x=250, coeff_y=0.00015,
     N_px_long=np.amax(array.shape)
     N_px_short=np.amin(array.shape)
     print("Generating lenslett")
-    z_mid=(scale_spacer*maxheight/2)
+    z_mid=scale_spacer/2#(scale_spacer+maxheight)/2
     front_vertices,front_faces,array_used=mk_vertices_faces(array,xdim=xdim,ydim=ydim,z_mid=z_mid,N_px_long=N_px_long)
     print(len(front_vertices),len(front_faces))
     #This is new with numpy-stl
@@ -114,4 +116,5 @@ def run_mk_crc(name,dir,size_mlls=50, coeff_x=0.00015, f_x=250, coeff_y=0.00015,
     print("expected size (x,y,z): ",(width_total,height_total,depth_total))
     print("Saved {0}.stl".format(name))
     print("Done")
+    print("zmid",z_mid)
     return(CRC)

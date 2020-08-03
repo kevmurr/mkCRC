@@ -8,16 +8,24 @@ import scipy.constants as sc
 def get_total_correction2(c,size_sfl_mll,factor_size_sfl,f_sfl,delta,pxsize):
     a_h=factor_size_sfl*size_sfl_mll/2
     c_mod=c*10**9/(f_sfl**3)
+    if c<1E-6:
+        c_mod=0
+        print("c_mod set to 0")
     phase_line_h_axis=np.linspace(-int(factor_size_sfl*size_sfl_mll)/2,int(factor_size_sfl*size_sfl_mll)/2,int(factor_size_sfl*size_sfl_mll/pxsize))
     phase_line_h=c_mod*(phase_line_h_axis**3 - a_h**2 * phase_line_h_axis)
+    #total correction ranges from max to 0
     total_correction_pre=-phase_line_h-np.amin(phase_line_h)
     L=np.amax(total_correction_pre)/2
     n=np.amax(phase_line_h_axis)
     line=((-L)/(n*(1+1/np.sqrt(3))))*phase_line_h_axis-L/(np.sqrt(3)+1)
     if c_mod>0:
         total_correction=total_correction_pre+line
+    elif c_mod==0:
+        print("Total correction set to 0")
+        total_correction=np.zeros_like(total_correction_pre)
     else:
         total_correction=total_correction_pre-line-(L-L/(np.sqrt(3)+2))
+    print(total_correction)
     wavelength=sc.c*sc.h/(17480*sc.e)
     corr_fac=1E6*wavelength/(2*np.pi*delta)
     total_correction=total_correction*corr_fac
@@ -209,7 +217,7 @@ def copy_obj(obj, dims, num_rows, num_cols, num_layers):
     copies = []
     for layer in range(num_layers):
         for row in range(num_rows):
-            for col in range(num_cols):
+            for col in range(num_cols+1):
                 # skip the position where original being copied is
                 if row == 0 and col == 0 and layer == 0:
                     continue
