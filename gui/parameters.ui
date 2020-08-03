@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>595</height>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -215,19 +215,6 @@
      <string>10</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>15</x>
-      <y>420</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Factor_size_h</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
@@ -366,22 +353,6 @@
      <string>0.005</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="LineEdit_factor_size_h">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>420</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An additional factor to scale the horizontal size of the Phaseplate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="text">
-     <string>1</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -477,22 +448,6 @@
     </property>
     <property name="text">
      <string>rad/mrad³</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="LineEdit_factor_size_v">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>450</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An additional factor to scale the vertical size of the Phaseplate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="text">
-     <string>1</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="LineEdit_Name">
@@ -627,19 +582,6 @@
      <string>Bounding Box size</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>15</x>
-      <y>450</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Factor_size_v</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
@@ -723,7 +665,6 @@
    <zorder>label_7</zorder>
    <zorder>frame_3</zorder>
    <zorder>LineEdit_pillarwidth</zorder>
-   <zorder>label_21</zorder>
    <zorder>label_18</zorder>
    <zorder>frame_2</zorder>
    <zorder>LineEdit_f_v</zorder>
@@ -731,7 +672,6 @@
    <zorder>LineEdit_postheight</zorder>
    <zorder>LineEdit_pxsize</zorder>
    <zorder>LineEdit_coeff_h</zorder>
-   <zorder>LineEdit_factor_size_h</zorder>
    <zorder>label</zorder>
    <zorder>label_8</zorder>
    <zorder>label_2</zorder>
@@ -739,7 +679,6 @@
    <zorder>label_20</zorder>
    <zorder>LineEdit_N_lensletts</zorder>
    <zorder>label_6</zorder>
-   <zorder>LineEdit_factor_size_v</zorder>
    <zorder>LineEdit_Name</zorder>
    <zorder>LineEdit_factor_phase</zorder>
    <zorder>LineEdit_scale_spacer</zorder>
@@ -749,7 +688,6 @@
    <zorder>label_24</zorder>
    <zorder>LineEdit_f_h</zorder>
    <zorder>label_17</zorder>
-   <zorder>label_22</zorder>
    <zorder>label_11</zorder>
    <zorder>label_10</zorder>
    <zorder>Button_SetDir</zorder>

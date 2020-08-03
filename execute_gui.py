@@ -87,8 +87,8 @@ class App(QtWidgets.QMainWindow,parameters.Ui_MainWindow):
         scale_spacer = float(self.LineEdit_scale_spacer.text())
         pillarwidth= float(self.LineEdit_pillarwidth.text())
         postheight= float(self.LineEdit_postheight.text())
-        factor_size_h = float(self.LineEdit_factor_size_h.text())
-        factor_size_v = float(self.LineEdit_factor_size_v.text())
+        factor_size_h = 1#float(self.LineEdit_factor_size_h.text())
+        factor_size_v = 1#float(self.LineEdit_factor_size_v.text())
         factor_phase = float(self.LineEdit_factor_phase.text())
         pxsize = float(self.LineEdit_pxsize.text())
 
